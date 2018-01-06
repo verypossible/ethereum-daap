@@ -1,4 +1,4 @@
-NAME = "verypossible/ethereum-daap"
+NAME = "verypossible/ethereum-dapp"
 
 all :
 	docker build -t $(NAME) .
