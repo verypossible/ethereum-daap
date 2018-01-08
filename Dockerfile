@@ -10,14 +10,18 @@ RUN apt-get install -y \
         inotify-tools \
         software-properties-common
 
-# Bootstrap node installation
+# Bootstrap node/yarn installation
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+
 # Bootstrap ethereum installation
 RUN add-apt-repository -y ppa:ethereum/ethereum && \
-		apt-get update
+        apt-get update
 RUN apt-get install -y \
-	    nodejs \
-		ethereum
+        nodejs \
+        ethereum \
+        yarn
 
 # # Install ethereum node packages
 RUN npm install -g \
